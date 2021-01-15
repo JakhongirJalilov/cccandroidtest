@@ -1,5 +1,7 @@
 package com.example.cccandroidtest.models
 
+import androidx.room.ColumnInfo
+
 /**
  * @author jakhongirjalilov
  * @version 2.0
@@ -14,6 +16,7 @@ data class EstDetails(
     val phone_number: String,
     val company: String = "",
     val address: String = "",
-    val number: Int = 0,
-    val revision_number: Int = 0
+    val number: Int,
+    val revision_number: Int,
+    val created_date: String
 )

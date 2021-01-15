@@ -6,6 +6,8 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.cccandroidtest.models.EstDetails
 import com.example.cccandroidtest.models.PersonModel
+import io.reactivex.Completable
+import io.reactivex.Flowable
 
 /**
  * @author jakhongirjalilov
@@ -18,12 +20,8 @@ import com.example.cccandroidtest.models.PersonModel
 interface PersonDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addPerson(personModel: PersonModel)
+    fun addPerson(personModel: PersonModel) : Completable
 
-    //BU XATO BUNAQA CHAQIRIB BUMAYDI SHEKILLI )
-//    @Query("SELECT * FROM person inner join estimate on id = estimate.requested_by AND id = estimate.created_by AND id = estimate.contact")
-//    fun getPerson(): List<EstimateUser>
-
-    @Query("SELECT person.id, person.first_name, person.last_name, person.phone_number, estimate.company, estimate.address, estimate.number, estimate.revision_number  FROM person, estimate WHERE person.id == estimate.requested_by")
-    fun getPerson(): List<EstDetails>
+    @Query("SELECT person.id, person.first_name, person.last_name, person.phone_number, estimate.company, estimate.address, estimate.number, estimate.revision_number, estimate.created_date  FROM person, estimate WHERE person.id == estimate.requested_by AND person.id == estimate.created_by AND person.id == estimate.contact")
+    fun getPerson(): Flowable<List<EstDetails>>
 }

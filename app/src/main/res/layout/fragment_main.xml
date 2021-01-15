@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.cccandroidtest.models.EstDetails" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/txtCompany"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:textStyle="bold"
+            android:text="@{viewmodel.company}"
+            app:layout_constraintBottom_toTopOf="@id/txtAddress"
+            app:layout_constraintStart_toEndOf="@id/img"
+            app:layout_constraintTop_toTopOf="@id/img"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="AAAAA" />
+
+        <TextView
+            android:id="@+id/txtAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.address}"
+            app:layout_constraintBottom_toBottomOf="@id/img"
+            app:layout_constraintStart_toStartOf="@id/txtCompany"
+            app:layout_constraintTop_toBottomOf="@id/txtCompany"
+            />
+
+        <TextView
+            android:id="@+id/estDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/est_details"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img" />
+
+        <View
+            android:id="@+id/border"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/estDetail" />
+
+        <TextView
+            android:id="@+id/estNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/est_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/border" />
+
+        <TextView
+            android:id="@+id/txtEstNumber"
+            android:layout_width="wrap_content"
+            android:text="@{Integer.toString(viewmodel.number)}"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/estNumber"
+            app:layout_constraintTop_toBottomOf="@id/estNumber"
+            tools:text="32" />
+
+        <TextView
+            android:id="@+id/created"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/created"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtEstNumber" />
+
+        <TextView
+            android:id="@+id/txtCreated"
+            android:layout_width="wrap_content"
+            android:text="@{viewmodel.created_date}"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/created"
+            app:layout_constraintTop_toBottomOf="@id/created"
+            tools:text="32" />
+
+        <TextView
+            android:id="@+id/requester"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/requester"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtCreated" />
+
+        <TextView
+            android:id="@+id/txtRequester"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.first_name + viewmodel.last_name}"
+            app:layout_constraintStart_toStartOf="@id/requester"
+            app:layout_constraintTop_toBottomOf="@id/requester"
+            tools:text="32" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/revisionNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/revision_number"
+            app:layout_constraintStart_toEndOf="@id/guide"
+            app:layout_constraintTop_toBottomOf="@id/border" />
+
+        <TextView
+            android:id="@+id/txtRevision"
+            android:layout_width="wrap_content"
+            android:text="@{Integer.toString(viewmodel.revision_number)}"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/revisionNumber"
+            app:layout_constraintTop_toBottomOf="@id/revisionNumber"
+            tools:text="32" />
+
+        <TextView
+            android:id="@+id/createdBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/created"
+            app:layout_constraintStart_toEndOf="@id/guide"
+            app:layout_constraintTop_toBottomOf="@id/txtRevision" />
+
+        <TextView
+            android:id="@+id/txtCreatedBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.first_name + viewmodel.last_name}"
+            app:layout_constraintStart_toStartOf="@id/createdBy"
+            app:layout_constraintTop_toBottomOf="@id/createdBy"
+            tools:text="32" />
+
+        <TextView
+            android:id="@+id/contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/contact"
+            app:layout_constraintStart_toEndOf="@id/guide"
+            app:layout_constraintTop_toBottomOf="@id/txtCreated" />
+
+        <TextView
+            android:id="@+id/txtContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/contact"
+            android:text="@{viewmodel.first_name + viewmodel.last_name}"
+            app:layout_constraintTop_toBottomOf="@id/contact"
+            tools:text="32" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
