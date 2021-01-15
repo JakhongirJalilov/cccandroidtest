@@ -20,10 +20,6 @@ interface PersonDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addPerson(personModel: PersonModel)
 
-    //BU XATO BUNAQA CHAQIRIB BUMAYDI SHEKILLI )
-//    @Query("SELECT * FROM person inner join estimate on id = estimate.requested_by AND id = estimate.created_by AND id = estimate.contact")
-//    fun getPerson(): List<EstimateUser>
-
     @Query("SELECT person.id, person.first_name, person.last_name, person.phone_number, estimate.company, estimate.address, estimate.number, estimate.revision_number  FROM person, estimate WHERE person.id == estimate.requested_by")
     fun getPerson(): List<EstDetails>
 }

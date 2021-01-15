@@ -8,12 +8,6 @@ import androidx.room.PrimaryKey
 
 @Entity(
     tableName = "estimate"
-//    foreignKeys = [ForeignKey(
-//        entity = PersonModel::class,
-//        parentColumns = arrayOf("id"),
-//        childColumns = arrayOf("created_by", "requested_by", "contact"),
-//        onDelete = ForeignKey.CASCADE
-//    )]
 )
 data class EstimateModel(
     @PrimaryKey(autoGenerate = false) @ColumnInfo(name = "id") val id: String = "", // c574b0b4-bdef-4b92-a8f0-608a86ccf5ab
